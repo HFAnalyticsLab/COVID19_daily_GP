@@ -32,6 +32,8 @@ The 'R' folder contains:
 * 0_download_data.R - download data.
 * 1_clean_data.R - Load, clean and save cleaned data. 
 * 2_tests.R - Unit tests to check that downloaded data is in the expected format 
+* 3_coverage_plot.R - Create plot showing coverage
+* 4_appointment_plots.R - Create appointment plots
 
 
 ## Authors
