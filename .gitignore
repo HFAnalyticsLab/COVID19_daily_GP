@@ -41,3 +41,7 @@ vignettes/*.pdf
 # Ignore csv
 
 *.csv
+
+# ignore mac storage files
+
+*.DS_store
