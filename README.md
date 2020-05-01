@@ -4,8 +4,7 @@
 
 ## Project Description
 
-A descriptive analysis of trends in daily GP activity. 
-
+A descriptive analysis of trends in daily GP activity.The code can be used to recreate the analysis described in our  [chart series](https://www.health.org.uk/news-and-comment/charts-and-infographics/how-might-covid-19-have-affected-peoples-ability-to-see-GP) 
 ## Data source
 
 We are using publically available data published by NHS digital. The data used for this analysis is not included in this repository but can be downloaded from their (website)[https://digital.nhs.uk/data-and-information/publications/statistical/appointments-in-general-practice/february-2020].
