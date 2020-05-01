@@ -1,10 +1,11 @@
-# COVID19 daily GP data analysis
+# COVID-19 daily GP data analysis
 
 #### Project Status: [In progess]
 
 ## Project Description
 
 A descriptive analysis of trends in daily GP activity.The code can be used to recreate the analysis described in our  [chart series](https://www.health.org.uk/news-and-comment/charts-and-infographics/how-might-covid-19-have-affected-peoples-ability-to-see-GP) 
+
 ## Data source
 
 We are using publically available data published by NHS digital. The data used for this analysis is not included in this repository but can be downloaded from their (website)[https://digital.nhs.uk/data-and-information/publications/statistical/appointments-in-general-practice/february-2020].
@@ -31,8 +32,10 @@ The 'R' folder contains:
 * 0_download_data.R - download data.
 * 1_clean_data.R - Load, clean and save cleaned data. 
 * 2_tests.R - Unit tests to check that downloaded data is in the expected format 
-* 3_coverage_plot.R - Create plot showing coverage
-* 4_appointment_plots.R - Create appointment plots
+* 3_coverage_plot.R - Create plot showing coverage. 
+* 4_appointment_plots.R - Create appointment plots by week showing average number of appointments per working day and absolute number of appointments. 
+* 5_appointment_avg_plots.R Create appointment plots by week showing average number of appointments normalised to 5 working days per week and absolute number of appointments.
+* 6_monthly_plots.R - Create appointment plots by month showing average number of appointments normalised to 25 working days per month and absolute number of appointments.
 
 
 ## Authors
