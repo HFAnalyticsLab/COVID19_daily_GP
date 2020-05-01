@@ -5,19 +5,20 @@ THF_red <- '#dd0031'
 
 THF_50pct_light_blue <- '#53a9cd'
 
-
+# Calculate number of working days in week 
 workingdays_in_week <- df %>% 
   filter(appt_year_month>'2019-03-01') %>% 
   dplyr::distinct(appt_week, appointment_date, working_day) %>% 
   group_by(appt_week) %>% 
   dplyr::mutate(number_of_working_days_week=sum(working_day)) 
-
+# Calculate number of working days in month
 workingdays_in_month <- df %>% 
   filter(appt_year_month>'2019-03-01') %>% 
   dplyr::distinct(appt_year, appt_month, appointment_date, working_day) %>% 
   group_by(appt_year, appt_month) %>% 
   dplyr::mutate(number_of_working_days_month=sum(working_day)) 
 
+# Aggregate to national level 
 national <- df %>% 
   filter(appt_year_month>'2019-03-01') %>% 
   left_join(workingdays_in_week, by=c("appointment_date", 'appt_week')) %>% 
@@ -56,13 +57,7 @@ ggplot(national, aes(x=last_day_of_week, y=appt_count_avg)) +
 
 ggsave(here::here('output', 'weekly_line_avg.pdf'))
 
-
-
-
-
-
 # Appointment type
-
 
 # plot by appointment type area plot
 national %>% 
