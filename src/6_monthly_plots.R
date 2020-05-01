@@ -76,7 +76,7 @@ ggplot(national,
   theme_THF() +
   theme(plot.title = element_text(size=11, hjust = 0), 
         plot.title.position='plot',
-        legend.position = c(0.65, 0.75),
+        legend.position = c(0.60, 0.75),
         legend.margin = margin(b = 10, l = -10, unit = 'mm'),
         legend.justification = c("right", "top"),
         legend.key = element_rect(fill = NA, 
@@ -92,7 +92,7 @@ ggplot(national,
 
 ggsave(here::here('output', 'monthly_line_appt_mode.png'))
 
-# National plot by appointment mode, not scaled ----
+# National plot , not scaled ----
 ggplot(national, 
        aes(x=appt_year_month, y=appt_count)) + 
   geom_line(colour=THF_red) +
