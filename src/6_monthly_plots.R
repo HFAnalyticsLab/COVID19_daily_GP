@@ -12,12 +12,6 @@ workingdays_in_month <- df %>%
 
 national <- df %>% 
   filter(appt_year_month>'2019-03-01') %>% 
-  mutate(appt_mode=fct_collapse(appt_mode,
-               "Face-to-Face" = c("Face-to-Face"),
-               "Telephone/Video Conference/Online" = c("Telephone", "Video Conference/Online"),
-               "Unknown" = c("Unknown"),
-               "Home Visit" = "Home Visit"
-  )) %>% 
   left_join(workingdays_in_month, by=c("appointment_date",'appt_year',  'appt_month')) %>% 
   group_by(appt_year_month) %>% 
   mutate(appt_count=sum(count_of_appointments), 
@@ -25,13 +19,14 @@ national <- df %>%
   group_by(appt_year_month, appt_mode) %>% 
   mutate(appt_mode_count=sum(count_of_appointments),
          appt_mode_count_scaled=(appt_mode_count/number_of_working_days_month)*25) %>% 
-  distinct(appt_year_month, appt_mode, appt_count, appt_mode_count,appt_count_scaled,  appt_mode_count_scaled)  
+  distinct(appt_year_month, appt_mode, appt_count, appt_mode_count,appt_count_scaled,  appt_mode_count_scaled) %>% 
+  mutate(app_mode_p=appt_mode_count/appt_count*100)
 
  # Create and save wide data set ----
 national_wide <- national %>% 
-  select(appt_year_month, appt_mode, appt_mode_count) %>% 
+  select(appt_year_month, appt_mode, appt_mode_count, app_mode_p) %>% 
   pivot_wider(id_cols = appt_year_month, names_from = appt_mode, 
-              values_from = appt_mode_count)
+              values_from = c(appt_mode_count, app_mode_p))
 
 write_csv(national_wide, here::here('data', 'GP_appointments_by_mode.csv'))
 
@@ -73,6 +68,7 @@ ggplot(national,
   scale_x_date(date_labels = "%b %Y", date_breaks = "4 weeks") +
   scale_y_continuous(labels = scales::label_comma(scale=0.000001), limits=c(0, NA)) + 
   scale_colour_THF(breaks=legend_breaks, label=legend_labels) +
+  guides(colour = guide_legend(ncol=2)) +
   theme_THF() +
   theme(plot.title = element_text(size=11, hjust = 0), 
         plot.title.position='plot',
@@ -86,7 +82,7 @@ ggplot(national,
         axis.text.y = element_text(angle = 0, vjust = 0, hjust = 0, face = 'plain'),
         plot.subtitle = element_text(size = 8)) + 
   labs(caption='Source: NHS Digital', 
-       title = 'Number of GP appointments in England, by type, \nfrom April 2019 to March 2020',
+       title = 'Number of GP appointments in England, by type, \nfrom April 2019 to April 2020',
        subtitle = '',
        y='Million', x='')
 
@@ -114,7 +110,7 @@ ggplot(national,
         axis.text.y = element_text(angle = 0, vjust = 0, hjust = 0, face = 'plain'),
         plot.subtitle = element_text(size = 8)) + 
   labs(caption='Source: NHS Digital', 
-       title = 'Monthly number of GP appointments scaled',
+       title = 'Monthly number of GP appointments',
        subtitle = '',
        y='Million', x='')
 
