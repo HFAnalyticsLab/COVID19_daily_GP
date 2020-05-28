@@ -1,4 +1,4 @@
-link <- 'https://files.digital.nhs.uk/C1/DB7954/Appointments_GP_Daily_Mar20.zip'
+link <- 'https://files.digital.nhs.uk/EA/AC7352/Appointments_GP_Daily_Apr20.zip'
 destfile <- here::here('data', 'original data' ,'GP.zip')
 download.file(link, destfile  )
 
