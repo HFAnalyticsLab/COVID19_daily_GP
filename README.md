@@ -36,7 +36,7 @@ The 'R' folder contains:
 * 4_appointment_plots.R - Create appointment plots by week showing average number of appointments per working day and absolute number of appointments. 
 * 5_appointment_avg_plots.R Create appointment plots by week showing average number of appointments normalised to 5 working days per week and absolute number of appointments.
 * 6_monthly_plots.R - Create appointment plots by month showing average number of appointments normalised to 25 working days per month and absolute number of appointments.
-
+* 7_regional_plots.R - Create appointment plots by month and region showing absolute number of appointments. 
 
 ## Authors
 
