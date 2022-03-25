@@ -1,6 +1,6 @@
 # COVID-19 daily GP data analysis
 
-#### Project Status: [In progess]
+#### Project Status: [completed]
 
 ## Project Description
 
